@@ -1,43 +1,81 @@
 <!--REACTIVE FORM STARTED-->
 
-<div class="container bg-black text-light p-4" id="contain" >
-    <h3 class="text-center">REACTIVE FORM</h3>
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <form [formGroup]="signinForm" (ngSubmit)="onSubmit1()">
+<div class="container bg-black text-light p-4" id="contain">
+  <h3 class="text-center">REACTIVE FORM</h3>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form [formGroup]="signinForm" (ngSubmit)="onSubmit1()">
+        <div formGroupName="userData">
           <div class="mb-3">
             <label for="username" class="form-label">User Name</label>
-            <input type="text"
-                   class="form-control"
-                   id="firstName"
-                   formControlName="username">
-                   <span class="help-block"
-                    *ngIf="!signinForm.get('username')?.valid && signinForm.get('username')?.touched">Please Enter User Name !</span>     
+            <input
+              type="text"
+              class="form-control"
+              id="firstName"
+              formControlName="username"
+            />
+            <span
+            *ngIf="!signinForm.get('userData.username')?.valid && signinForm.get('userData.username')?.touched"
+            class="help-block">
+            <!-- <span *ngIf="signinForm.get('userData.username')?.errors['nameIsForbidden']">This name is invalid!</span>
+            <span *ngIf="signinForm.get('userData.username')?.errors['required']">This field is required!</span> -->
+            Please Enter Your Name !
+          </span>
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="text"
-                   class="form-control" 
-                   id="lastName"
-                   formControlName="email">
-                   <span class="help-block"
-                   *ngIf="!signinForm.get('email')?.valid && signinForm.get('email')?.touched">Please Enter Valid Email Address !</span>     
+            <input
+              type="text"
+              class="form-control"
+              id="lastName"
+              formControlName="email"
+            />
+            <span
+              class="help-block"
+              *ngIf="
+                !signinForm.get('userData.email')?.valid &&
+                signinForm.get('userData.email')?.touched
+              "
+              >Please Enter Valid Email Address !</span
+            >
           </div>
-          <div class="mb-3">
-            <label class="form-label">Gender</label>
-            <div class="form-check" *ngFor="let gender of genders2">
-              <input class="form-check-input" 
-                     type="radio" 
-                     [value]="gender"
-                     formControlName="gender">
-              <label class="form-check-label">{{gender}}</label>
-            </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Gender</label>
+          <div class="form-check" *ngFor="let gender of genders2">
+            <input
+              class="form-check-input"
+              type="radio"
+              [value]="gender"
+              formControlName="gender"
+            />
+            <label class="form-check-label">{{ gender }}</label>
           </div>
-          <span class="help-block"
-                    *ngIf="!signinForm.valid && signinForm.touched">Please Enter Valid Data! !</span>     
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </div>
+        </div>
+        <div formArrayName="hobbies">
+          <h4>Your Hobbies</h4>
+          <button class="btn btn-danger" type="button" (click)="onAddHobby()">
+            Add Hobby
+          </button>
+          <br />
+          <br />
+          <div
+            class="form-group"
+            *ngFor="let hobbyControl of getControls(); let i = index"
+          >
+            <input type="text" class="form-control" [formControlName]="i" />
+            <span
+              class="help-block"
+              *ngIf="!hobbyControl.valid && hobbyControl.touched"
+              >Please Enter a Hobby!</span
+            >
+          </div>
+        </div>
+        <span class="help-block" *ngIf="!signinForm.valid && signinForm.touched"
+          >Please Enter Valid Data! !</span
+        >
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
     </div>
   </div>
-  
+</div>

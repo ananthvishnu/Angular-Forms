@@ -1,0 +1,26 @@
+<div class="container bg-black text-light p-4" id="contain">
+    <h1 class="text-center">Template Driven Form</h1>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 offset-sm-1 offset-md-2">
+      <form [formGroup]="projectForm" (ngSubmit)="onSaveProject()">
+        <div class="form-group">
+          <label for="name">Project Name</label>
+          <input type="text" id="name" class="form-control" formControlName="projectName" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" id="email" class="form-control" formControlName="email" />
+        </div>
+        <div class="form-group">
+          <label for="status">Project status </label>
+          <select name="status" id="status" formControlName="projectStatus">
+            <option value="Stable">Stable</option>
+            <option value="Critical">Critical</option>
+            <option value="Finished">Finished</option>
+          </select>
+        </div>
+        <button class="btn btn-info" type="submit">Create Project</button>
+      </form>
+    </div>
+  </div>
+</div>

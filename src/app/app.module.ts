@@ -7,14 +7,16 @@ import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
-import { ReactiveFormComponent } from './reactive-form/reactive-form.component'
+import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
+import { TempletDrivenTwoComponent } from './templet-driven-two/templet-driven-two.component'
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     HomeComponent,
     TemplateDrivenFormComponent,
-    ReactiveFormComponent
+    ReactiveFormComponent,
+    TempletDrivenTwoComponent
   ],
   imports: [
     BrowserModule,
