@@ -1,0 +1,43 @@
+<!--REACTIVE FORM STARTED-->
+
+<div class="container bg-black text-light p-4" id="contain" >
+    <h3 class="text-center">REACTIVE FORM</h3>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form [formGroup]="signinForm" (ngSubmit)="onSubmit1()">
+          <div class="mb-3">
+            <label for="username" class="form-label">User Name</label>
+            <input type="text"
+                   class="form-control"
+                   id="firstName"
+                   formControlName="username">
+                   <span class="help-block"
+                    *ngIf="!signinForm.get('username')?.valid && signinForm.get('username')?.touched">Please Enter User Name !</span>     
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="text"
+                   class="form-control" 
+                   id="lastName"
+                   formControlName="email">
+                   <span class="help-block"
+                   *ngIf="!signinForm.get('email')?.valid && signinForm.get('email')?.touched">Please Enter Valid Email Address !</span>     
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Gender</label>
+            <div class="form-check" *ngFor="let gender of genders2">
+              <input class="form-check-input" 
+                     type="radio" 
+                     [value]="gender"
+                     formControlName="gender">
+              <label class="form-check-label">{{gender}}</label>
+            </div>
+          </div>
+          <span class="help-block"
+                    *ngIf="!signinForm.valid && signinForm.touched">Please Enter Valid Data! !</span>     
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
