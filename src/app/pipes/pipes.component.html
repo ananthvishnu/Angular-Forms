@@ -1,0 +1,26 @@
+<div class="container">
+    <h1 class="text-center">PIPES</h1>
+    <div class="row">
+      <div class="col-12 col-sm-10 col-md-8 offset-sm-1 offset-md-2">
+        <label for="">Custom Filter for Filtering with Server Status type: stable or offline</label>
+        <input type="text" [(ngModel)]="filteredStatus"  class="form-control">
+        <br>
+        <button class="btn btn-success" (click)="onAddServer()">
+          Add Server
+        </button>
+        <br><br>
+        <h1>App Status:{{appStatus | async}}</h1>
+        <hr>
+        <ul class="list-group">
+          <li *ngFor="let server of servers | filterPipe:filteredStatus:'status'" [ngClass]="getStatusClasses(server)" class="list-group-item">
+            <span class="badge bg-secondary">{{ server.status }}</span>
+            <strong>{{ server.name | shorten: 15 }}</strong> | 
+            {{ server.instanceType | uppercase}} |
+            {{ server.started | date:'fullDate' | uppercase}}
+            <!--Pipes eppavume left to right than work pannum example first UPPERCASE next than fulldate-->
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  

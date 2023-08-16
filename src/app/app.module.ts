@@ -8,7 +8,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
-import { TempletDrivenTwoComponent } from './templet-driven-two/templet-driven-two.component'
+import { TempletDrivenTwoComponent } from './templet-driven-two/templet-driven-two.component';
+import { PipesComponent } from './pipes/pipes.component'
+import { shortenPipe } from './pipes/shorten.pipe';
+import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +19,10 @@ import { TempletDrivenTwoComponent } from './templet-driven-two/templet-driven-t
     HomeComponent,
     TemplateDrivenFormComponent,
     ReactiveFormComponent,
-    TempletDrivenTwoComponent
+    TempletDrivenTwoComponent,
+    PipesComponent,
+    shortenPipe,
+    FilterPipePipe
   ],
   imports: [
     BrowserModule,
